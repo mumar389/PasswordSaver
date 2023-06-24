@@ -104,11 +104,15 @@ module.exports.googleHome=async(req,res)=>{
 }
 module.exports.logout=async(req,res)=>{
   try {
-    req.logout(async()=>{
-      res.clearCookie("jwt")
-      return res.status(200).json({
-        message:"Logout Successfull"
-      })
+    // req.logout(async()=>{
+    //   res.clearCookie("jwt")
+    //   return res.status(200).json({
+    //     message:"Logout Successfull"
+    //   })
+    // })
+    res.clearCookie("jwt")
+    return res.status(200).json({
+      message:"Logout Successfull"
     })
   } catch (error) {
     console.log(error);
