@@ -29,14 +29,14 @@ const LoginPage = () => {
       const { message } = resp;
       alert(message);
     //   navigate("/save-password");
-    window.open('http://localhost:3000/save-password','_self')
+    window.open('https://password-saver-umar.vercel.app/save-password','_self')
     } else {
       alert("Internal Server Error");
       navigate('/login')
     }
   };
   const googleLogin = async (e) => {
-    window.open("http://localhost:7890/user/auth/google", "_self");
+    window.open("https://password-saver-umar.vercel.app/user/auth/google", "_self");
   };
   return (
     <div className="container">

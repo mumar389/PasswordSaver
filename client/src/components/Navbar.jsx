@@ -29,7 +29,7 @@ const Navbar = () => {
         const { message } = resp;
         alert(message);
         //   navigate("/");
-        window.open("http://localhost:3000/", "_self");
+        window.open("https://password-saver-umar.vercel.app/", "_self");
     } else {
         alert("Internal Server Error");
         navigate('/save-password')

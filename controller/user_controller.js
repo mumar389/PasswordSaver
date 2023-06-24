@@ -94,7 +94,7 @@ module.exports.googleHome=async(req,res)=>{
       expiresIn: "10000000",
     });
     res.cookie('jwt',token)
-    return res.redirect('http://localhost:3000/save-password')
+    return res.redirect('https://password-saver-umar.vercel.app/save-password')
   } catch (error) {
     console.log(error);
     return res.status(500).json({
