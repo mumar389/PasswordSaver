@@ -23,16 +23,16 @@ const Navbar = () => {
       const resp = await res.json();
       const { message } = resp;
       alert(message);
-      navigate('/save-password')
+      navigate("/save-password");
     } else if (res.status === 200) {
-        const resp = await res.json();
-        const { message } = resp;
-        alert(message);
-        //   navigate("/");
-        window.open("https://password-saver-umar.vercel.app/", "_self");
+      const resp = await res.json();
+      const { message } = resp;
+      alert(message);
+      //   navigate("/");
+      window.open("https://password-saver-umar.vercel.app/", "_self");
     } else {
-        alert("Internal Server Error");
-        navigate('/save-password')
+      alert("Internal Server Error");
+      navigate("/save-password");
     }
   };
   //navbar-dark bg-dark

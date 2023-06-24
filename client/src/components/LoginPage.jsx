@@ -24,19 +24,25 @@ const LoginPage = () => {
       const { message } = resp;
       alert(message);
     } else if (res.status === 200) {
-    //   console.log("Error");
+      //   console.log("Error");
       const resp = await res.json();
       const { message } = resp;
       alert(message);
-    //   navigate("/save-password");
-    window.open('https://password-saver-umar.vercel.app/save-password','_self')
+      //   navigate("/save-password");
+      window.open(
+        "https://password-saver-umar.vercel.app/save-password",
+        "_self"
+      );
     } else {
       alert("Internal Server Error");
-      navigate('/login')
+      navigate("/login");
     }
   };
   const googleLogin = async (e) => {
-    window.open("https://password-saver-umar.vercel.app/user/auth/google", "_self");
+    window.open(
+      "https://password-saver-umar.vercel.app/user/auth/google",
+      "_self"
+    );
   };
   return (
     <div className="container">
@@ -66,9 +72,9 @@ const LoginPage = () => {
           Login
         </button>
       </form>
-      <br/>
+      <br />
       <button onClick={googleLogin}>Login using Google</button>
-      <br/>
+      <br />
       <Link to="/register" style={{ color: "white", fontSize: "20px" }}>
         Not Yet Registered? click here to Register
       </Link>

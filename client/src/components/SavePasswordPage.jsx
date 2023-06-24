@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const SavePasswordPage = () => {
-  const [title, setTitle] = useState('');
-  const [password, setPassword] = useState('');
-  const [link, setLink] = useState('');
+  const [title, setTitle] = useState("");
+  const [password, setPassword] = useState("");
+  const [link, setLink] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,7 +44,9 @@ const SavePasswordPage = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">Save Password</button>
+        <button type="submit" className="btn btn-primary">
+          Save Password
+        </button>
       </form>
     </div>
   );
