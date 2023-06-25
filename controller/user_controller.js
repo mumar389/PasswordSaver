@@ -95,7 +95,7 @@ module.exports.googleHome=async(req,res)=>{
     });
     res.cookie('jwt',token)
     res.cookie("google","pwdsaver")
-    return res.redirect('https://password-saver-umar.vercel.app/save-password')
+    return res.redirect('https://pwd-saver.vercel.app/save-password')
     // return res.json({token})
   } catch (error) {
     console.log(error);
