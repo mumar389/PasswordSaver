@@ -39,21 +39,21 @@ const LoginPage = () => {
   //   window.open("https://password-saver-umar.vercel.app/user/auth/google", "_self");
   // };
   const googleLogin = async (e) => {
-    // window.open("http://localhost:7890/user/auth/google", "_self");
+    window.open("http://localhost:7890/user/auth/google", "_self");
     /*
       headers: {
         "Content-Type": "application/json",
       },
     */
-    const res = await fetch("https://password-saver-umar.vercel.app/user/auth/google", {
-      method: "GET",
-    });
-    if (res.status === 200) {
-      const resp = await res.json();
-      console.log("Token Got",resp.data);
-    } else {
-      alert("Error");
-    }
+    // const res = await fetch("https://password-saver-umar.vercel.app/user/auth/google", {
+    //   method: "GET",
+    // });
+    // if (res.status === 200) {
+    //   const resp = await res.json();
+    //   console.log("Token Got",resp.data);
+    // } else {
+    //   alert("Error");
+    // }
     // if (res.status === 301 || res.status === 422) {
     //   console.log("Error");
     //   const resp = await res.json();
