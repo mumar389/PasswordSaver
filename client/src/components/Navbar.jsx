@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import base from "../url";
 const Navbar = () => {
   // const [cookie] = useCookies();
+  const [loggedin,setLogin]=useState(false);
   const [loading, setloading] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const Navbar = () => {
       const resp = await res.json();
       const { message } = resp;
       localStorage.removeItem("jwt");
+      setLogin(true)
       console.log(message);
       window.open(`${base}/`, "_self");
       setloading(false);
@@ -40,7 +42,13 @@ const Navbar = () => {
       navigate("/save-password");
     }
   };
-  //navbar-dark bg-dark
+  useEffect(()=>{
+    if(localStorage.getItem("jwt")){
+      setLogin(true)
+    }else{
+      setLogin(false)
+    }
+  },[])
   return (
     <>
       <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
@@ -64,7 +72,7 @@ const Navbar = () => {
                   Home
                 </Link>
               </li>
-              {localStorage.getItem("jwt") ? (
+              {loggedin ? (
                 <>
                   <li className="nav-item">
                     <Link className="nav-link" to="/save-password">
