@@ -29,7 +29,7 @@ router.delete(
 router.get('/auth/google',
 passport.authenticate('google', { scope: ['profile','email'] }));
 router.get('/auth/google/google-home',passport.authenticate('google',{
-  failureRedirect:'https://password-saver-umar.vercel.app/login'}),userControl.googleHome);
+  failureRedirect:'https://pwd-saver.vercel.app/login'}),userControl.googleHome);
 router.get('/sign-out',userControl.logout)
 
 module.exports = router;

@@ -8,7 +8,7 @@ passport.use(
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       callbackURL:
-        "https://password-saver-umar.vercel.app/user/auth/google/google-home",
+        "https://pwd-saver.vercel.app/user/auth/google/google-home",
     },
    async function (accessToken, refreshToken, profile, cb) {
       const user=await User.findOne({ email: profile.emails[0].value })
