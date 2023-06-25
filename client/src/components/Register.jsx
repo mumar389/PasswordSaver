@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -41,57 +42,60 @@ const Register = () => {
   };
 
   return (
-    <div className="container">
-      <h2>Register Page</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3 w-50">
-          <label className="form-label">Name:</label>
-          <input
-            type="text"
-            className="form-control"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-3 w-50">
-          <label className="form-label">Email:</label>
-          <input
-            type="email"
-            className="form-control"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-3 w-50">
-          <label className="form-label">Password:</label>
-          <input
-            type="password"
-            className="form-control"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-3 w-50">
-          <label className="form-label">Confirm Password:</label>
-          <input
-            type="password"
-            className="form-control"
-            value={cp}
-            onChange={(e) => setCp(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Register
-        </button>
-      </form>
-      <Link to="/login" style={{ color: "white", fontSize: "20px" }}>
-        Already Registered? click here to login
-      </Link>
-    </div>
+    <>
+      <div className="container">
+        <h2>Register Page</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3 w-50">
+            <label className="form-label">Name:</label>
+            <input
+              type="text"
+              className="form-control"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3 w-50">
+            <label className="form-label">Email:</label>
+            <input
+              type="email"
+              className="form-control"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3 w-50">
+            <label className="form-label">Password:</label>
+            <input
+              type="password"
+              className="form-control"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3 w-50">
+            <label className="form-label">Confirm Password:</label>
+            <input
+              type="password"
+              className="form-control"
+              value={cp}
+              onChange={(e) => setCp(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Register
+          </button>
+        </form>
+        <Link to="/login" style={{ color: "white", fontSize: "20px" }}>
+          Already Registered? click here to login
+        </Link>
+      </div>
+      <Footer />
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import base from "../url";
+import Footer from "./Footer";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -61,6 +62,8 @@ const LoginPage = () => {
     // eslint-disable-next-line
   }, []);
   return (
+    <>
+
     <div className="container">
       {loading && <Loading />}
       <h2>Login Page</h2>
@@ -96,6 +99,8 @@ const LoginPage = () => {
         Not Yet Registered? click here to Register
       </Link>
     </div>
+    <Footer/>
+    </>
   );
 };
 

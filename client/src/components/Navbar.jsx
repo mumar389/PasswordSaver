@@ -32,12 +32,10 @@ const Navbar = () => {
       const { message } = resp;
       localStorage.removeItem("jwt");
       console.log(message);
-      // token=false
-      // alert(message);
-      //   navigate("/");
       window.open(`${base}/`, "_self");
       setloading(false);
     } else {
+      setloading(false);
       alert("Internal Server Error");
       navigate("/save-password");
     }
