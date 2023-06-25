@@ -104,7 +104,7 @@ module.exports.googleHome=async(req,res)=>{
 }
 module.exports.logout=async(req,res)=>{
   try {
-    req.logout(async()=>{
+    req.logout(()=>{
       res.clearCookie("jwt")
       return res.status(200).json({
         message:"Logout Successfull"
