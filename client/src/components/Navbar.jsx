@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
-
+import base from "../url";
 const Navbar = () => {
   // const [cookie] = useCookies();
   const [loading, setloading] = useState(false);
@@ -36,7 +36,7 @@ const Navbar = () => {
       // alert(message);
       console.log(message);
       //   navigate("/");
-      window.open("https://password-saver-umar.vercel.app/", "_self");
+      window.open(`${base}/`, "_self");
     } else {
       alert("Internal Server Error");
       navigate("/save-password");

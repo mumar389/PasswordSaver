@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
+import base from "../url";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -33,7 +34,7 @@ const LoginPage = () => {
       localStorage.setItem("jwt", data);
       setLoading(false);
       window.open(
-        "https://password-saver-umar.vercel.app/save-password",
+        `${base}/save-password`,
         "_self"
       );
     } else {
@@ -45,7 +46,7 @@ const LoginPage = () => {
   const googleLogin = async (e) => {
     try {
       window.open(
-        "https://password-saver-umar.vercel.app/user/auth/google",
+        `${base}/user/auth/google`,
         "_self"
       );
     } catch (error) {
