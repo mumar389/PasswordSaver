@@ -50,7 +50,7 @@ const LoginPage = () => {
     });
     if (res.status === 200) {
       const resp = await res.json();
-      console.log(resp);
+      console.log("Token Got",resp.data);
     } else {
       alert("Error");
     }
