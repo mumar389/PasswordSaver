@@ -72,7 +72,7 @@ module.exports.loginUser = async (req, res) => {
         let token = jwt.sign(existUser.toJSON(), `${process.env.SECRET}`, {
           expiresIn: "10000000",
         });
-        res.cookie('jwt',token)
+        // res.cookie('jwt',token)
         // console.log("Token Created",token);
         return res.status(200).json({
           message: "Login Successfull",
@@ -94,6 +94,7 @@ module.exports.googleHome=async(req,res)=>{
       expiresIn: "10000000",
     });
     res.cookie('jwt',token)
+    res.cookie("google","pwdsaver")
     return res.redirect('https://password-saver-umar.vercel.app/save-password')
     // return res.json({token})
   } catch (error) {

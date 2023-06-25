@@ -4,6 +4,9 @@ import { useCookies } from "react-cookie";
 
 const Protected = (props) => {
   const [cookie] = useCookies();
+  if (cookie.google === "pwdsaver") {
+    if (!localStorage.getItem("jwt")) localStorage.setItem("jwt", cookie.jwt);
+  }
   const { Component } = props;
   const navigate = useNavigate();
   const verifyUser = async () => {
@@ -11,7 +14,7 @@ const Protected = (props) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${cookie.jwt}`,
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       },
     });
     if (res.status === 301 || res.status === 422) {
@@ -33,7 +36,11 @@ const Protected = (props) => {
     }
   };
   useEffect(() => {
-    verifyUser();
+    if (localStorage.getItem("jwt") || cookie.google === "pwdsaver")
+      verifyUser();
+    else {
+      navigate("/login");
+    }
     // eslint-disable-next-line
   }, []);
   return <Component />;

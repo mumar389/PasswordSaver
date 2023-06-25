@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Loading from "./Loading";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle login logic here
+    setLoading(true);
     const res = await fetch("/user/create-session", {
       method: "POST",
       headers: {
@@ -23,58 +26,42 @@ const LoginPage = () => {
       const resp = await res.json();
       const { message } = resp;
       alert(message);
+      setLoading(false);
     } else if (res.status === 200) {
-    //   console.log("Error");
       const resp = await res.json();
-      const { message } = resp;
-      alert(message);
-    //   navigate("/save-password");
-    window.open('https://password-saver-umar.vercel.app/save-password','_self')
+      const { data } = resp;
+      localStorage.setItem("jwt", data);
+      setLoading(false);
+      window.open(
+        "https://password-saver-umar.vercel.app/save-password",
+        "_self"
+      );
     } else {
       alert("Internal Server Error");
-      navigate('/login')
+      setLoading(false);
+      navigate("/login");
     }
   };
-  // const googleLogin = async (e) => {
-  //   window.open("https://password-saver-umar.vercel.app/user/auth/google", "_self");
-  // };
   const googleLogin = async (e) => {
-    window.open("http://localhost:7890/user/auth/google", "_self");
-    /*
-      headers: {
-        "Content-Type": "application/json",
-      },
-    */
-    // const res = await fetch("https://password-saver-umar.vercel.app/user/auth/google", {
-    //   method: "GET",
-    // });
-    // if (res.status === 200) {
-    //   const resp = await res.json();
-    //   console.log("Token Got",resp.data);
-    // } else {
-    //   alert("Error");
-    // }
-    // if (res.status === 301 || res.status === 422) {
-    //   console.log("Error");
-    //   const resp = await res.json();
-    //   const { message } = resp;
-    //   alert(message);
-    // } else if (res.status === 200) {
-    // //   console.log("Error");
-    //   const resp = await res.json();
-    //   // const { message } = resp;
-    //   // alert(message);
-    //   console.log("Response aa gya",resp);
-    //   setLoading(false)
-    // //   navigate("/save-password");
-    // window.open('http://localhost:3000/save-password','_self')
-    // } else {
-    //   alert("Internal Server Error");
-    //   navigate('/login')
-    // }
+    try {
+      window.open(
+        "https://password-saver-umar.vercel.app/user/auth/google",
+        "_self"
+      );
+    } catch (error) {
+      console.log("Google login failed:", error);
+    }
   };
+  useEffect(() => {
+    if (localStorage.getItem("jwt")) {
+      navigate("/save-password");
+    } else {
+    }
+    // eslint-disable-next-line
+  }, []);
   return (
     <div className="container">
+      {loading && <Loading />}
       <h2>Login Page</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3 w-50">
@@ -101,9 +88,9 @@ const LoginPage = () => {
           Login
         </button>
       </form>
-      <br/>
+      <br />
       <button onClick={googleLogin}>Login using Google</button>
-      <br/>
+      <br />
       <Link to="/register" style={{ color: "white", fontSize: "20px" }}>
         Not Yet Registered? click here to Register
       </Link>
