@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "./Footer";
 
 const HomePage = () => {
+  useEffect(() => {
+    const clearCookiesOnUnload = () => {
+      // Clear your cookies here
+      document.cookie = 'cookieName=jwt; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      localStorage.removeItem('jwt')
+    };
+
+    window.addEventListener('beforeunload', clearCookiesOnUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', clearCookiesOnUnload);
+    };
+  }, []);
   return (
     <>
       <div className="container">
