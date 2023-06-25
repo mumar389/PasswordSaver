@@ -8,6 +8,7 @@ const db = require("./config/mongoose");
 const jwtStrategy = require("./config/passport-jwt-strategy");
 const LocalStrategy = require("./config/local_strategy");
 const GoogleStrategy = require("./config/passport-google-strategy");
+const cors=require('cors')
 const app = express();
 
 app.use(express.json());
@@ -19,7 +20,7 @@ app.use(
     cookie: { secure: true },
   })
 );
-
+app.use(cors())
 app.use(passport.initialize());
 app.use(passport.session());
 
