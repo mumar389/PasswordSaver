@@ -34,10 +34,7 @@ const LoginPage = () => {
       const { data } = resp;
       localStorage.setItem("jwt", data);
       setLoading(false);
-      window.open(
-        `${base}/save-password`,
-        "_self"
-      );
+      window.open(`${base}/save-password`, "_self");
     } else {
       alert("Internal Server Error");
       setLoading(false);
@@ -46,10 +43,7 @@ const LoginPage = () => {
   };
   const googleLogin = async (e) => {
     try {
-      window.open(
-        `${base}/user/auth/google`,
-        "_self"
-      );
+      window.open(`${base}/user/auth/google`, "_self");
     } catch (error) {
       console.log("Google login failed:", error);
     }
@@ -63,43 +57,47 @@ const LoginPage = () => {
   }, []);
   return (
     <>
-
-    <div className="container">
-      {loading && <Loading />}
-      <h2>Login Page</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3 w-50">
-          <label className="form-label">Email:</label>
-          <input
-            type="email"
-            className="form-control"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-3 w-50">
-          <label className="form-label">Password:</label>
-          <input
-            type="password"
-            className="form-control"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
-      </form>
-      <br />
-      <button onClick={googleLogin}>Login using Google</button>
-      <br />
-      <Link to="/register" style={{ color: "white", fontSize: "20px" }}>
-        Not Yet Registered? click here to Register
-      </Link>
-    </div>
-    <Footer/>
+      <div className="container">
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <h2>Login Page</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3 w-50">
+                <label className="form-label">Email:</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="mb-3 w-50">
+                <label className="form-label">Password:</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <button type="submit" className="btn btn-primary">
+                Login
+              </button>
+            </form>
+            <br />
+            <button onClick={googleLogin}>Login using Google</button>
+            <br />
+            <Link to="/register" style={{ color: "white", fontSize: "20px" }}>
+              Not Yet Registered? click here to Register
+            </Link>
+          </>
+        )}
+      </div>
+      <Footer />
     </>
   );
 };
