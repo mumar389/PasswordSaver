@@ -54,7 +54,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            Password Manager
+            Password Saver
           </Link>
           <button
             className="navbar-toggler"
