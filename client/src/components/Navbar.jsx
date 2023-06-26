@@ -27,7 +27,7 @@ const Navbar = () => {
       const { message } = resp;
       alert(message);
       setloading(false);
-      navigate("/save-password");
+      navigate("/save-password-page");
     } else if (res.status === 200) {
       const resp = await res.json();
       const { message } = resp;
@@ -39,7 +39,7 @@ const Navbar = () => {
     } else {
       setloading(false);
       alert("Internal Server Error");
-      navigate("/save-password");
+      navigate("/save-password-page");
     }
   };
   useEffect(()=>{
@@ -75,8 +75,13 @@ const Navbar = () => {
               {loggedin ? (
                 <>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/save-password">
+                    <Link className="nav-link" to="/save-password-page">
                       Save-Password
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/get-password-page">
+                      All-Passwords
                     </Link>
                   </li>
                   <li className="nav-item">
