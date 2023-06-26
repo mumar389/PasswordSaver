@@ -34,7 +34,7 @@ const LoginPage = () => {
       const { data } = resp;
       localStorage.setItem("jwt", data);
       setLoading(false);
-      window.open(`${base}/save-password`, "_self");
+      window.open(`${base}/save-password-page`, "_self");
     } else {
       alert("Internal Server Error");
       setLoading(false);
@@ -50,7 +50,7 @@ const LoginPage = () => {
   };
   useEffect(() => {
     if (localStorage.getItem("jwt")) {
-      navigate("/save-password");
+      navigate("/save-password-page");
     } else {
     }
     // eslint-disable-next-line

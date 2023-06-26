@@ -24,12 +24,7 @@ const Protected = (props) => {
       alert(message);
       navigate("/login");
     } else if (res.status === 200) {
-      console.log("Error");
-      const resp = await res.json();
-      const { message } = resp;
-      console.log(message);
-      // alert(message);
-      // navigate("/save-password");
+      
     } else {
       // alert("Internal Server Error");
       navigate("/login");

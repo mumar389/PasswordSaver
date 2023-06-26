@@ -31,9 +31,13 @@ module.exports.create = async (req, res) => {
         email,
         password: hashPwd,
       });
+      let token = jwt.sign(newUser.toJSON(), `${process.env.SECRET}`, {
+        expiresIn: "10000000",
+      });
       // console.log("New User Created Sucessfully", newUser);
       return res.status(200).json({
         message: "User Registered Sucessfully",
+        data:token
       });
     } else {
       // console.log("User with this email already exists");
@@ -89,13 +93,13 @@ module.exports.loginUser = async (req, res) => {
 };
 module.exports.googleHome=async(req,res)=>{
   try {
-    console.log("Logged in",req.user);
+    // console.log("Logged in",req.user);
     let token = jwt.sign(req.user.toJSON(), `${process.env.SECRET}`, {
       expiresIn: "10000000",
     });
     res.cookie('jwt',token)
     res.cookie("google","pwdsaver")
-    return res.redirect('https://pwd-saver.vercel.app/save-password')
+    return res.redirect('https://pwd-saver.vercel.app/save-password-page')
     // return res.json({token})
   } catch (error) {
     console.log(error);
@@ -108,14 +112,11 @@ module.exports.logout=async(req,res)=>{
   try {
     req.logout(()=>{
       res.clearCookie("jwt")
+      res.clearCookie("google")
       return res.status(200).json({
         message:"Logout Successfull"
       })
     })
-    // res.clearCookie("jwt")
-    // return res.status(200).json({
-    //   message:"Logout Successfull"
-    // })
   } catch (error) {
     console.log(error);
     return res.status(500).json({

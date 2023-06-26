@@ -96,3 +96,36 @@ module.exports.deletePassKeys = async (req, res) => {
     });
   }
 };
+module.exports.editPassword=async(req,res)=>{
+  try {
+      const id=req.params.id
+      const {updated}=req.body
+      const currentPassword=await Password.findById(id);
+      let pid=JSON.stringify(currentPassword.user)
+      let cid=JSON.stringify(req.user.id)
+      // console.log(cid,pid);
+      if(pid==cid){
+        // console.log("Aaya",updated);
+        var encrypted = await CryptoJS.AES.encrypt(
+          updated,
+          `${process.env.SECRET}`
+          );
+          // console.log("Enc",encrypted);
+        currentPassword.passkey=encrypted
+        currentPassword.save();
+        return res.status(200).json({
+          message: "Password Updated Successfully",
+        });
+      }else{
+        // console.log("Mere me aaya😢😢");
+        return res.status(422).json({
+          message: "Unauthorized Access",
+        });
+      }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+}

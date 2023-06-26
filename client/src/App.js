@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import HomePage from "./components/HomePage";
 import Register from "./components/Register";
 import Protected from "./components/Protected";
+import GetPassword from "./components/GetPassword";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/save-password" element={<Protected Component={SavePasswordPage} />} />
+        <Route path="/save-password-page" element={<Protected Component={SavePasswordPage} />} />
+        <Route path="/get-password-page" element={<Protected Component={GetPassword} />} />
+        <Route path="*" element={<ErrorPage/>} />
       </Routes>
     </>
   );

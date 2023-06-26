@@ -26,6 +26,11 @@ router.delete(
   passport.authenticate("jwt", { session: false }),
   passSaverController.deletePassKeys
 );
+router.patch(
+  "/edit-password/:id",
+  passport.authenticate("jwt", { session: false }),
+  passSaverController.editPassword
+);
 router.get('/auth/google',
 passport.authenticate('google', { scope: ['profile','email'] }));
 router.get('/auth/google/google-home',passport.authenticate('google',{
