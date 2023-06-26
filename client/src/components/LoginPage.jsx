@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import base from "../url";
 import Footer from "./Footer";
-
+import {FcGoogle} from 'react-icons/fc'
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -89,7 +89,9 @@ const LoginPage = () => {
               </button>
             </form>
             <br />
-            <button onClick={googleLogin}>Login using Google</button>
+            <button className="mt-2 btn btn-light" onClick={googleLogin}>
+             <FcGoogle/>  Login 
+            </button>
             <br />
             <Link to="/register" style={{ color: "white", fontSize: "20px" }}>
               Not Yet Registered? click here to Register

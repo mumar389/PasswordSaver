@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Loading from "./Loading";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Footer from "./Footer";
 const SavePasswordPage = () => {
   const [title, setTitle] = useState("");
   const [password, setPassword] = useState("");
@@ -44,6 +45,8 @@ const SavePasswordPage = () => {
   };
 
   return (
+    <>
+
     <div className="container">
       {loading ? (
         <>
@@ -100,6 +103,9 @@ const SavePasswordPage = () => {
         </>
       )}
     </div>
+    <Footer/>
+    </>
+
   );
 };
 

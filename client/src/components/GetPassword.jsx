@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaEye, FaEdit, FaTrash, FaEyeSlash, FaSave } from "react-icons/fa";
 import Loading from "./Loading";
+import Footer from "./Footer";
 
 const GetPassword = () => {
   const [loading, setLoading] = useState(false);
@@ -108,91 +109,96 @@ const GetPassword = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <div className="container password-list-container">
-      {loading ? (
-        <>
-          <Loading />
-        </>
-      ) : (
-        <>
-          {passwords.length === 0 ? (
-            <>
-              <h4>Please Secure Your passwords!!</h4>
-            </>
-          ) : (
-            <>
-              <table className="password-list-table">
-                <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th>Password</th>
-                    <th>Hide/Show</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {passwords.map((password) => (
-                    <tr key={password._id}>
-                      <td>{password.title}</td>
-                      <td>
-                        {password.isEditing ? (
-                          <>
-                            <input
-                              type="text"
-                              onChange={(e) => {
-                                setUpdated(e.target.value);
-                              }}
-                              value={update}
-                            />
-                          </>
-                        ) : (
-                          <>
-                            {password.showPassword
-                              ? password.passkey
-                              : "********"}
-                          </>
-                        )}
-                      </td>
-                      <td>
-                        <button
-                          onClick={() => handleTogglePassword(password._id)}
-                        >
-                          {password.showPassword ? <FaEyeSlash /> : <FaEye />}
-                        </button>
-                        {/* ... */}
-                      </td>
-                      <td>
-                        {password.isEditing ? (
-                          <>
-                            <button onClick={() => savePassword(password._id)}>
-                              <FaSave />
-                            </button>
-                          </>
-                        ) : (
-                          <>
-                            <button
-                              onClick={() => handleEditPassword(password._id)}
-                            >
-                              <FaEdit />
-                            </button>
-                          </>
-                        )}
-
-                        <button
-                          onClick={() => handleDeletePassword(password._id)}
-                        >
-                          <FaTrash />
-                        </button>
-                      </td>
+    <>
+      <div className="container password-list-container">
+        {loading ? (
+          <>
+            <Loading />
+          </>
+        ) : (
+          <>
+            {passwords.length === 0 ? (
+              <>
+                <h4>Please Secure Your passwords!!</h4>
+              </>
+            ) : (
+              <>
+                <table className="password-list-table">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Password</th>
+                      <th>Hide/Show</th>
+                      <th>Actions</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </>
-          )}
-        </>
-      )}
-    </div>
+                  </thead>
+                  <tbody>
+                    {passwords.map((password) => (
+                      <tr key={password._id}>
+                        <td>{password.title}</td>
+                        <td>
+                          {password.isEditing ? (
+                            <>
+                              <input
+                                type="text"
+                                onChange={(e) => {
+                                  setUpdated(e.target.value);
+                                }}
+                                value={update}
+                              />
+                            </>
+                          ) : (
+                            <>
+                              {password.showPassword
+                                ? password.passkey
+                                : "********"}
+                            </>
+                          )}
+                        </td>
+                        <td>
+                          <button
+                            onClick={() => handleTogglePassword(password._id)}
+                          >
+                            {password.showPassword ? <FaEyeSlash /> : <FaEye />}
+                          </button>
+                          {/* ... */}
+                        </td>
+                        <td>
+                          {password.isEditing ? (
+                            <>
+                              <button
+                                onClick={() => savePassword(password._id)}
+                              >
+                                <FaSave />
+                              </button>
+                            </>
+                          ) : (
+                            <>
+                              <button
+                                onClick={() => handleEditPassword(password._id)}
+                              >
+                                <FaEdit />
+                              </button>
+                            </>
+                          )}
+
+                          <button
+                            onClick={() => handleDeletePassword(password._id)}
+                          >
+                            <FaTrash />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </>
+            )}
+          </>
+        )}
+      </div>
+      <Footer />
+    </>
   );
 };
 

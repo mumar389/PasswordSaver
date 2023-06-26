@@ -8,6 +8,7 @@ import Register from "./components/Register";
 import Protected from "./components/Protected";
 import GetPassword from "./components/GetPassword";
 import ErrorPage from "./components/ErrorPage";
+import GeneratePassword from "./components/GeneratePassword";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/save-password-page" element={<Protected Component={SavePasswordPage} />} />
         <Route path="/get-password-page" element={<Protected Component={GetPassword} />} />
+        <Route path="/generate-password-page" element={<Protected Component={GeneratePassword} />} />
         <Route path="*" element={<ErrorPage/>} />
       </Routes>
     </>
