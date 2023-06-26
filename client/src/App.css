@@ -45,9 +45,9 @@ body{
     transform: rotate(360deg);
   }
 }
-/*
-for loading screen
-*/
+
+
+
 .loading-screen {
   display: flex;
   flex-direction: column;
@@ -73,4 +73,69 @@ for loading screen
   100% {
     transform: rotate(360deg);
   }
+}
+.password-input-container {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  padding-right: 40px; /* Add some space for the button on the right */
+}
+
+.password-toggle-button {
+  position: absolute;
+  top: 34.5%;
+  right: 51%; /* Adjust the value to fine-tune the button's position */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.password-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.password-list-table {
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  /* width: 80%;
+  max-width: 800px;
+  margin: 20px; */
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.password-list-table th,
+.password-list-table td {
+  padding: 10px;
+}
+
+.password-list-table th {
+  background-color: #f1f1f1;
+}
+
+.password-list-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.password-list-table button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+.password-list-table button:hover {
+  color: #000;
+}
+
+.password-list-table svg {
+  vertical-align: middle;
+  margin-right: 5px;
 }
