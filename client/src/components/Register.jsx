@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "./Footer";
-
+import Loading from "./Loading";
+import base from "../url";
 const Register = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [name, setName] = useState("");
-
+  const[loading,setloading]=useState(false)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cp, setCp] = useState("");
@@ -29,20 +30,28 @@ const Register = () => {
       console.log("Error");
       const resp = await res.json();
       const { message } = resp;
+      setloading(false)
       alert(message);
     } else if (res.status === 200) {
-      console.log("Error");
       const resp = await res.json();
-      const { message } = resp;
-      alert(message);
-      navigate("/login");
+      const { data } = resp;
+      localStorage.setItem("jwt", data);
+      setloading(false);
+      window.open(`${base}/save-password-page`, "_self");
     } else {
+      setloading(false)
       alert("Internal Server Error");
     }
   };
 
   return (
     <>
+    {
+      loading?<>
+      <Loading/>
+      </>
+      :
+      <>
       <div className="container">
         <h2>Register Page</h2>
         <form onSubmit={handleSubmit}>
@@ -94,6 +103,9 @@ const Register = () => {
           Already Registered? click here to login
         </Link>
       </div>
+      </>
+    }
+     
       <Footer />
     </>
   );
