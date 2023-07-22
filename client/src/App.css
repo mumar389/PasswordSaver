@@ -92,7 +92,7 @@ input {
   cursor: pointer;
 }
 
-.password-list-container {
+/* .password-list-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,13 +101,50 @@ input {
 .password-list-table {
   border-collapse: collapse;
   border: 1px solid #ccc;
-  /* width: 80%;
-  max-width: 800px;
-  margin: 20px; */
+ 
   width: 90%;
   max-width: 1200px;
   margin: 20px auto;
   font-family: Arial, sans-serif;
+} */
+.password-list-container {
+  overflow-x: auto; /* Enable horizontal scrolling for smaller screens */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .password-list-container {
+    overflow-x: hidden; 
+  }
+
+  th, td {
+    padding: 2px;
+    font-size: 15px;
+  }
+
+
+
+
+ 
+  tr {
+    display: block;
+    border-bottom: 1px solid #ddd;
+  }
+
+  td {
+    margin-bottom: 8px;
+  }
 }
 
 .password-list-table th,
