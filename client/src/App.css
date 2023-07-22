@@ -125,7 +125,7 @@ th, td {
 /* Media query for smaller screens */
 @media (max-width: 768px) {
   .password-list-container {
-    overflow-x: hidden; 
+    overflow-x: scroll; 
   }
 
   th, td {
